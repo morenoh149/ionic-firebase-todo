@@ -61,11 +61,12 @@ app.controller('ContentController', function($scope, $timeout, $ionicModal, Proj
     $scope.activeTasks = $scope.activeProject.$child('tasks');
     $scope.taskKeys = $scope.activeTasks.$getIndex();
     Projects.setLastActiveKey(key);
-    $scope.sideMenuController.close();
+    //TODO figure what this was doing
+    //$scope.sideMenuController.close();
   };
 
   // Create our modal
-  $ionicModal.fromTemplateUrl('new-task.html', function(modal) {
+  $ionicModal.fromTemplateUrl('templates/new-task.html', function(modal) {
     $scope.taskModal = modal;
   }, {
     scope: $scope
