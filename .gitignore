@@ -5,3 +5,5 @@ www
 .DS_Store
 app/bower_components
 coverage
+plugins
+platforms
