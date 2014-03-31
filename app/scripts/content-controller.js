@@ -1,6 +1,11 @@
 'use strict';
 
-app.controller('ContentController', function($scope, $timeout, $ionicModal, Projects, $firebase, $ionicLoading) {
+app.controller('ContentController', function($scope,
+                                             $ionicModal,
+                                             Projects,
+                                             $firebase,
+                                             $ionicLoading,
+                                             $ionicSideMenuDelegate) {
 
   // Load projects
   var projectsUrl = 'https://ionic-guide-harry.firebaseio.com/projects/';
@@ -79,7 +84,7 @@ app.controller('ContentController', function($scope, $timeout, $ionicModal, Proj
     $scope.activeTasks.$add({
       title: task.title,
       finished: false
-    }).then(function(ref) {
+    }).then(function(/*ref*/) {
       $scope.activeTasks = $scope.activeProject.$child('tasks');
       $scope.taskKeys = $scope.activeTasks.$getIndex();
       $scope.hideLoading();
@@ -100,7 +105,8 @@ app.controller('ContentController', function($scope, $timeout, $ionicModal, Proj
   };
 
   $scope.toggleProjects = function() {
-    $scope.sideMenuController.toggleLeft();
+    //$scope.sideMenuController.toggleLeft();
+    $ionicSideMenuDelegate.toggleLeft();
   };
 
   $scope.toggleTask = function(key) {
@@ -117,21 +123,5 @@ app.controller('ContentController', function($scope, $timeout, $ionicModal, Proj
     }
     console.log($scope.activeTasks.$child(key).finished);
   };
-
-
-  // Try to create the first project, make sure to defer
-  // this by using $timeout so everything is initialized
-  // properly
-  //$timeout(function() {
-  //  if($scope.projects.length == 0) {
-  //    while(true) {
-  //      var projectTitle = prompt('Your first project title:');
-  //      if(projectTitle) {
-  //        createProject(projectTitle);
-  //        break;
-  //      }
-  //    }
-  //  }
-  //});
 
 });
