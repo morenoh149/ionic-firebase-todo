@@ -40,6 +40,7 @@ app.controller('ContentController', function($scope,
     } else {
       $scope.selectProject($scope.projectKeys[0]);
     }
+    console.log($scope.projectKeys);
   });
 
   // utility function for creating a new project with the given projectTitle
@@ -71,7 +72,7 @@ app.controller('ContentController', function($scope,
   };
 
   // Create our modal
-  $ionicModal.fromTemplateUrl('templates/new-task.html', function(modal) {
+  $ionicModal.fromTemplateUrl('templates/newtaskmodal.html', function(modal) {
     $scope.taskModal = modal;
   }, {
     scope: $scope

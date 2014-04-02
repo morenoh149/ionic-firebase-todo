@@ -1,0 +1,16 @@
+<ion-pane>
+  <ion-header-bar class="bar-dark">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    <h1 class="title">Todo App</h1>
+    <button class="button button-icon icon ion-compose" ng-click="newTask()"></button>
+  </ion-header-bar>
+  <ion-content class="has-header">
+    <ul class="list">
+      <li ng-repeat="key in taskKeys"
+          ng-click="toggleTask(key)"
+          ng-class="{active: activeTasks[key].finished === true}">
+        <ion-checkbox ng-model="isChecked">{{ activeTasks[key].title }}</ion-checkbox>
+      </li>
+    </ul>
+  </ion-content>
+</ion-pane>

@@ -13,3 +13,26 @@ app.run(function($ionicPlatform) {
     }
   });
 });
+
+app.config(function($stateProvider, $urlRouterProvider) {
+  $stateProvider
+
+  .state('app', {
+    url: '/app',
+    abstract: true,
+    templateUrl: 'templates/applayout.html',
+    controller: 'ContentController'
+  })
+
+  .state('app.tasks', {
+    url: '/tasks',
+    views: {
+      'menuContent' :{
+        templateUrl: 'templates/centercontent.html',
+        controller: 'ContentController'
+      }
+    }
+  });
+
+  $urlRouterProvider.otherwise('/app/tasks');
+});
