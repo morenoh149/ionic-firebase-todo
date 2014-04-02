@@ -67,8 +67,6 @@ app.controller('ContentController', function($scope,
     $scope.activeTasks = $scope.activeProject.$child('tasks');
     $scope.taskKeys = $scope.activeTasks.$getIndex();
     Projects.setLastActiveKey(key);
-    //TODO figure what this was doing
-    //$scope.sideMenuController.close();
   };
 
   // Create our modal
