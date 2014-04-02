@@ -20,16 +20,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
   .state('app', {
     url: '/app',
     abstract: true,
-    templateUrl: 'templates/applayout.html',
-    controller: 'ContentController'
+    controller: 'ContentController',
+    templateUrl: 'templates/applayout.html'
   })
 
   .state('app.tasks', {
     url: '/tasks',
     views: {
       'menuContent' :{
-        templateUrl: 'templates/centercontent.html',
-        controller: 'ContentController'
+        templateUrl: 'templates/centercontent.html'
       }
     }
   });

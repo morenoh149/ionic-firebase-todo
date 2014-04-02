@@ -33,14 +33,14 @@ app.controller('ContentController', function($scope,
   // select project from localstorage if present
   $scope.projects.$on('loaded', function() {
     $scope.hideLoading();
-    $scope.projectKeys = $scope.projects.$getIndex();
-    $scope.lastActiveProjectKey = Projects.getLastActiveKey();
-    if (firebaseKeyRegEx.test($scope.lastActiveProjectKey)) {
-      $scope.selectProject($scope.lastActiveProjectKey);
-    } else {
-      $scope.selectProject($scope.projectKeys[0]);
-    }
-    console.log($scope.projectKeys);
+//    $scope.projectKeys = $scope.projects.$getIndex();
+//    $scope.lastActiveProjectKey = Projects.getLastActiveKey();
+//    if (firebaseKeyRegEx.test($scope.lastActiveProjectKey)) {
+//      $scope.selectProject($scope.lastActiveProjectKey);
+//    } else {
+//      $scope.selectProject($scope.projectKeys[0]);
+//    }
+//    console.log($scope.projectKeys);
   });
 
   // utility function for creating a new project with the given projectTitle

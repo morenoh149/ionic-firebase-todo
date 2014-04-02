@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "dependencies": {
     "angular": "1.2.12",
-    "ionic": "v1.0.0-beta.1",
+    "ionic": "driftyco/ionic-bower#master",
     "firebase": "~1.0.11",
     "angularfire": "~0.7.1"
   },
