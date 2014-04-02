@@ -40,7 +40,6 @@ app.controller('ContentController', function($scope,
     } else {
       $scope.selectProject($scope.projectKeys[0]);
     }
-    console.log($scope.projectKeys);
   });
 
   // utility function for creating a new project with the given projectTitle
@@ -69,9 +68,14 @@ app.controller('ContentController', function($scope,
     Projects.setLastActiveKey(key);
   };
 
-  // Create our modal
+  // Create our modals
   $ionicModal.fromTemplateUrl('templates/newtaskmodal.html', function(modal) {
     $scope.taskModal = modal;
+  }, {
+    scope: $scope
+  });
+  $ionicModal.fromTemplateUrl('templates/newprojectmodal.html', function(modal) {
+    $scope.projectModal = modal;
   }, {
     scope: $scope
   });
@@ -104,7 +108,6 @@ app.controller('ContentController', function($scope,
   };
 
   $scope.toggleProjects = function() {
-    //$scope.sideMenuController.toggleLeft();
     $ionicSideMenuDelegate.toggleLeft();
   };
 
