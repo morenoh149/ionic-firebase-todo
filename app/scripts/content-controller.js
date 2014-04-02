@@ -112,18 +112,27 @@ app.controller('ContentController', function($scope,
   };
 
   $scope.toggleTask = function(key) {
-    var taskFinishedRef = $scope.activeTasks.$child(key).$child('finished');
-    console.log(taskFinishedRef);
-    taskFinishedRef.on('value', function(snapshot) {
-      console.log(snapshot.val());
+    var clickedTask = $scope.activeTasks.$child(key);
+    console.log(clickedTask);
+    clickedTask.$set({
+      title: clickedTask.title,
+      finished: !clickedTask.finished
     });
-    if($scope.activeTasks.$child(key).finished) {
-      console.log($scope.activeTasks.$child(key));
-      $scope.activeTasks.$child(key).finished = !$scope.activeTasks.$child(key).finished;
-    } else {
-      $scope.activeTasks.$child(key).finished = 'true';
-    }
-    console.log($scope.activeTasks.$child(key).finished);
+    //clickedTaskFinished.$on('value', function(snapshot) {
+    //  if(snapshot.val() === null) {
+    //    console.log('data does not exist, setting it now');
+    //    snapshot.val().set(false);
+    //  } else {
+    //    console.log(snapshot.val());
+    //  }
+    //});
+    //if($scope.activeTasks.$child(key).finished) {
+    //  console.log($scope.activeTasks.$child(key));
+    //  $scope.activeTasks.$child(key).finished = !$scope.activeTasks.$child(key).finished;
+    //} else {
+    //  $scope.activeTasks.$child(key).finished = 'true';
+    //}
+    //console.log($scope.activeTasks.$child(key).finished);
   };
 
 });
