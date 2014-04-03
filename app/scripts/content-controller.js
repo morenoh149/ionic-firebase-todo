@@ -1,15 +1,18 @@
 'use strict';
 
+app.constant('FIREBASE_URI', 'https://ionic-guide-harry.firebaseio.com/projects/');
+
 app.controller('ContentController', function($scope,
                                              $ionicModal,
                                              Projects,
                                              $firebase,
                                              $ionicLoading,
-                                             $ionicSideMenuDelegate) {
+                                             $ionicSideMenuDelegate,
+                                             FIREBASE_URI) {
 
+  //TODO move this into a projects service object
   // Load projects
-  var projectsUrl = 'https://ionic-guide-harry.firebaseio.com/projects/';
-  var projectRef = new Firebase(projectsUrl);
+  var projectRef = new Firebase(FIREBASE_URI);
   var firebaseKeyRegEx = /^-[A-Za-z0-9]{19}$/;
 
   // 3-way bind projects variable
@@ -113,26 +116,8 @@ app.controller('ContentController', function($scope,
 
   $scope.toggleTask = function(key) {
     var clickedTask = $scope.activeTasks.$child(key);
-    console.log(clickedTask);
-    clickedTask.$set({
-      title: clickedTask.title,
-      finished: !clickedTask.finished
-    });
-    //clickedTaskFinished.$on('value', function(snapshot) {
-    //  if(snapshot.val() === null) {
-    //    console.log('data does not exist, setting it now');
-    //    snapshot.val().set(false);
-    //  } else {
-    //    console.log(snapshot.val());
-    //  }
-    //});
-    //if($scope.activeTasks.$child(key).finished) {
-    //  console.log($scope.activeTasks.$child(key));
-    //  $scope.activeTasks.$child(key).finished = !$scope.activeTasks.$child(key).finished;
-    //} else {
-    //  $scope.activeTasks.$child(key).finished = 'true';
-    //}
-    //console.log($scope.activeTasks.$child(key).finished);
+    clickedTask.finished = !clickedTask.finished;
+    clickedTask.$save();
   };
 
 });

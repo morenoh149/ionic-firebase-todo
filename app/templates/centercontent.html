@@ -7,21 +7,14 @@
   </ion-nav-buttons>
   <ion-content class="has-header">
     <ul class="list">
-      <!--
-      <li ng-repeat="key in taskKeys"
-          ng-click="toggleTask(key)"
-          ng-class="{active: activeTasks[key].finished === true}">
-        <ion-checkbox ng-model="isChecked">{{ activeTasks[key].title }}</ion-checkbox>
-      </li>
-      -->
       <li class="item item-checkbox"
-        ng-repeat="key in taskKeys"
-        ng-click="toggleTask(key)"
-        ng-class="{active: activeTasks[key].finished === true}">
+        ng-repeat="(key, task) in activeTasks"
+        ng-class="{finished: activeTasks[key].finished === true}">
         <label class="checkbox checkbox-assertive">
-          <input type="checkbox" ng-model="activeTasks[key].finshed">
+          <input type="checkbox" ng-model="task.finished" ng-click="toggleTask(key)">
+          {{ task.finished }}
         </label>
-        {{ activeTasks[key].title }}
+        {{ task.title }}
       </li>
     </ul>
   </ion-content>
