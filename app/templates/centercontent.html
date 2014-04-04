@@ -13,8 +13,16 @@
         <label class="checkbox checkbox-assertive">
           <input type="checkbox" ng-model="task.finished" ng-click="toggleTask(key)">
         </label>
-        {{ task.title }}
+        <span class="input-label">{{ task.title }}</span>
+        <!--
+        <a class="x-box" type="text" ng-model="user.username">X</a>
+        -->
+        <button class="button button-icon icon ion-close-circled
+                       x-box red"></button>
       </li>
     </ul>
   </ion-content>
 </ion-view>
+
+
+
