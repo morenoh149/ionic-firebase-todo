@@ -13,7 +13,7 @@ app.controller('ContentController', function($scope,
   //TODO move this into a projects service object
   // Load projects
   var projectRef = new Firebase(FIREBASE_URI);
-  var firebaseKeyRegEx = /^-[A-Za-z0-9]{19}$/;
+  var firebaseKeyRegEx = /^-\w{19}$/;
 
   // 3-way bind projects variable
   $scope.projects = $firebase(projectRef);
@@ -38,9 +38,11 @@ app.controller('ContentController', function($scope,
     $scope.hideLoading();
     $scope.projectKeys = $scope.projects.$getIndex();
     $scope.lastActiveProjectKey = Projects.getLastActiveKey();
+    console.log('last project: ' + $scope.lastActiveProjectKey);
     if (firebaseKeyRegEx.test($scope.lastActiveProjectKey)) {
       $scope.selectProject($scope.lastActiveProjectKey);
     } else {
+      console.log('key no good');
       $scope.selectProject($scope.projectKeys[0]);
     }
   });
@@ -67,7 +69,7 @@ app.controller('ContentController', function($scope,
   $scope.selectProject = function(key) {
     $scope.activeProject = $scope.projects.$child(key);
     $scope.activeTasks = $scope.activeProject.$child('tasks');
-    $scope.taskKeys = $scope.activeTasks.$getIndex();
+    //$scope.taskKeys = $scope.activeTasks.$getIndex();
     Projects.setLastActiveKey(key);
   };
 
@@ -92,7 +94,7 @@ app.controller('ContentController', function($scope,
       finished: false
     }).then(function(/*ref*/) {
       $scope.activeTasks = $scope.activeProject.$child('tasks');
-      $scope.taskKeys = $scope.activeTasks.$getIndex();
+      //$scope.taskKeys = $scope.activeTasks.$getIndex();
       $scope.hideLoading();
     });
     $scope.taskModal.hide();

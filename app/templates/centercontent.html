@@ -12,7 +12,6 @@
         ng-class="{finished: activeTasks[key].finished === true}">
         <label class="checkbox checkbox-assertive">
           <input type="checkbox" ng-model="task.finished" ng-click="toggleTask(key)">
-          {{ task.finished }}
         </label>
         {{ task.title }}
       </li>

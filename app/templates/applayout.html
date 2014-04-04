@@ -15,7 +15,7 @@
       <ul class="list">
         <li class="item"
             menu-close
-            ng-repeat="key in projectKeys"
+            ng-repeat="(key, project) in projects"
             ng-click="selectProject(key)"
             ng-class="{active: activeProject === project}">
           {{ projects[key].title }}
