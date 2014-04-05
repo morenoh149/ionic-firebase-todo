@@ -10,7 +10,7 @@
       <li class="item item-checkbox task"
         ng-repeat="(key, task) in activeTasks"
         ng-class="{finished: activeTasks[key].finished === true}">
-        <label class="checkbox checkbox-assertive">
+        <label class="checkbox checkbox-balanced">
           <input type="checkbox" ng-model="task.finished" ng-click="toggleTask(key)">
         </label>
         <span>{{ task.title }}</span>

@@ -1,17 +1,16 @@
 <div class="modal">
 
-  <!-- Modal header bar -->
-  <header class="bar bar-header bar-secondary">
+  <ion-header-bar class="bar-dark">
     <h1 class="title">New Project</h1>
-    <button class="button button-clear button-positive" ng-click="closeNewProject()">Cancel</button>
-  </header>
+    <button class="button" ng-click="closeNewProject()">Cancel</button>
+  </ion-header-bar>
 
   <!-- Modal content area -->
   <ion-content has-header="true">
     <form ng-submit="createProject(project)">
       <div class="list">
         <label class="item item-input">
-          <input type="text" placeholder="New Project name" ng-model="project.title">
+          <input type="text" placeholder="What do you need to do?" ng-model="project.title">
         </label>
       </div>
       <div class="padding">

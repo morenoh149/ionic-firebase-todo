@@ -45,23 +45,6 @@ app.controller('ContentController', function($scope,
     }
   });
 
-  // utility function for creating a new project with the given projectTitle
-  var createProject = function(projectTitle) {
-    var newProject = Projects.newProject(projectTitle);
-
-    // store project to firebase projects, upon success make it active project
-    $scope.projects.$add(newProject).then( function(ref) {
-      $scope.selectProject(ref.name());
-    });
-  };
-
-  // Trigger modal for a new project
-  $scope.newProject = function() {
-    var projectTitle = prompt('Project name');
-    if(projectTitle) {
-      createProject(projectTitle);
-    }
-  };
 
   // Selects the given project by it's firebase key
   $scope.selectProject = function(key) {
@@ -100,12 +83,39 @@ app.controller('ContentController', function($scope,
     task.title = '';
   };
 
+  $scope.createProject = function(project) {
+    if(!project) {
+      return;
+    }
+
+    // store project to firebase projects, upon success make it active project
+    $scope.projects.$add({
+      title: project.title
+    }).then( function(ref) {
+      $scope.selectProject(ref.name());
+      $scope.hideLoading();
+    });
+    $scope.projectModal.hide();
+    $scope.showLoading();
+
+    project.title = '';
+  };
+
+
   $scope.newTask = function() {
     $scope.taskModal.show();
   };
 
+  $scope.newProject = function() {
+    $scope.projectModal.show();
+  };
+
   $scope.closeNewTask = function() {
     $scope.taskModal.hide();
+  };
+
+  $scope.closeNewProject = function() {
+    $scope.projectModal.hide();
   };
 
   $scope.toggleProjects = function() {
@@ -117,5 +127,9 @@ app.controller('ContentController', function($scope,
     clickedTask.finished = !clickedTask.finished;
     clickedTask.$save();
   };
+
+  //$scope.deleteTask = function(key) {
+  //  $scope.deleteTaskModal.show();
+  //};
 
 });

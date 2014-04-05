@@ -14,11 +14,12 @@
     <ion-content class="has-header">
       <ul class="list">
         <li class="item"
-            menu-close
             ng-repeat="(key, project) in projects"
             ng-click="selectProject(key)"
             ng-class="{active: activeProject === project}">
           {{ projects[key].title }}
+          <button class="button button-icon icon ion-close-circled
+                       x-box red"></button>
         </li>
       </ul>
     </ion-content>
