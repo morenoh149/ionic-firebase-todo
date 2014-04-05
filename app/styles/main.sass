@@ -15,11 +15,18 @@
   float: right
   margin: -15px 0
 
+  // the only current way to make an ionicon smaller is to access this pseudo class
   &:before
     font-size: 25px
 
 .red
-  color: #A60000
+  color: #A88A8A //#A60000
+
+.checkbox.checkbox-assertive input:checked:before
+  background: #85ADA7
+
+.checkbox.checkbox-assertive input:before
+  border: 1px solid #85ADA7
 
 .task.item-checkbox
   padding-right: 45px
