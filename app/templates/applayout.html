@@ -19,7 +19,8 @@
             ng-class="{active: activeProject === project}">
           {{ projects[key].title }}
           <button class="button button-icon icon ion-close-circled
-                       x-box red"></button>
+            x-box red"
+            ng-click="deleteProject(key)"></button>
         </li>
       </ul>
     </ion-content>

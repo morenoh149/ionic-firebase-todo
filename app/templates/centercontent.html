@@ -15,7 +15,8 @@
         </label>
         <span>{{ task.title }}</span>
         <button class="button button-icon icon ion-close-circled
-                       x-box red"></button>
+          x-box red"
+          ng-click="deleteTask(key)"></button>
       </li>
     </ul>
   </ion-content>

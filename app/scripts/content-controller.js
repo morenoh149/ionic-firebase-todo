@@ -8,6 +8,7 @@ app.controller('ContentController', function($scope,
                                              $firebase,
                                              $ionicLoading,
                                              $ionicSideMenuDelegate,
+                                             $ionicPopup,
                                              FIREBASE_URI) {
 
   //TODO move this into a projects service object
@@ -128,8 +129,21 @@ app.controller('ContentController', function($scope,
     clickedTask.$save();
   };
 
-  //$scope.deleteTask = function(key) {
-  //  $scope.deleteTaskModal.show();
-  //};
+  $scope.deleteTask = function(key) {
+    $scope.activeTasks.$remove(key);
+  };
+
+  $scope.deleteProject = function(key) {
+    $ionicPopup.confirm({
+      title: 'Delete Project',
+      content: 'You sure?'
+    }).then(function(res) {
+      if(res) {
+        $scope.projects.$remove(key);
+        $scope.selectProject($scope.projectKeys[0]);
+      } else {
+      }
+    });
+  };
 
 });
