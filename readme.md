@@ -6,9 +6,9 @@ please don't bomb my firebase :)
 Inspired by [TodoMVC](http://www.todomvc.com)
 
 
-The MIT License (MIT)
+### The MIT License (MIT)
 
-Copyright (c) [year] [fullname]
+Copyright (c) [2014] [Harry Moreno]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
