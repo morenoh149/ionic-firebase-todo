@@ -52,6 +52,7 @@ app.controller('ContentController', function($scope,
     $scope.activeProject = $scope.projects.$child(key);
     $scope.activeTasks = $scope.activeProject.$child('tasks');
     Projects.setLastActiveKey(key);
+    $ionicSideMenuDelegate.toggleLeft(false);
   };
 
   // Create our modals
